@@ -40,8 +40,8 @@ Hora : <?php echo $cita['hora']?><br>
 
 
 
-<button type="submit" name="submit" value="aceptar">Aceptar</button>
-<button type="submit" name="submit" value="cancelar">Cancelar</button>
+<input type="submit" name="submit" value="aceptar">
+<input type="submit" name="submit" value="cancelar">
     
    
 </form>
