@@ -114,7 +114,7 @@ class UsuarioModel
     public function save()
     {
         if (!isset($this->personaID)) {
-            $consulta = $this->db->prepare('INSERT INTO citas_usuarios ( dni, nombre, apellidos, telefono, email) VALUES ( ?, ?, ?, ?, ?)');
+            $consulta = $this->db->prepare('INSERT INTO citas_usuarios ( nif, nombre, apellidos, telefono, email) VALUES ( ?, ?, ?, ?, ?)');
             $consulta->bindParam(1, $this->dni);
             $consulta->bindParam(2, $this->nombre);
             $consulta->bindParam(3, $this->apellidos);
