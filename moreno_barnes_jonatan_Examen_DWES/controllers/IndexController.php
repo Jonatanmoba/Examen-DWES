@@ -122,6 +122,9 @@ class IndexController
 				$this->view->show("editarView.php", array("cita" => $cita, "errores" => $errores));
 			}
 		}
+		elseif (isset($_REQUEST['submit']) && $_REQUEST['submit'] == 'cancelar') {
+			header("Location: index.php?controlador=index&accion=inicio");
+		}
 	
 		$this->view->show("editarView.php", array("cita" => $cita, "errores" => $errores));
 	}
