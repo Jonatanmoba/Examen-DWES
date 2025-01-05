@@ -71,6 +71,7 @@ class IndexController
 	public function editarCitas() {
 		require 'models/UsuarioModel.php';
 		require 'models/CitasModel.php';
+		require 'models/ReservaModel.php';
 	
 		$errores = array();
 		$codigocita = $_REQUEST['codigo'];
@@ -79,6 +80,7 @@ class IndexController
 		$cita = $item->getByCita($codigocita);
 	
 		$usuario = new UsuarioModel();
+		$reserva = new ReservaModel();
 	
 		if (isset($_REQUEST['submit']) && $_REQUEST['submit'] == 'aceptar') {
 			// Validación del DNI
@@ -116,6 +118,12 @@ class IndexController
 				$usuario->setTelefono($_REQUEST['telefono']);
 				$usuario->setEmail($_REQUEST['email']);
 				$usuario->save();
+				$resultadousuario = new UsuarioModel();
+				$resultadousuario= $usuario->getByDni($_REQUEST['dni']);
+				$reserva->setCita_id($codigocita);
+				$reserva->setUsuario_Id($resultadousuario->usuario_id); // Si usuario_id es pública
+
+				$reserva->save();
 				header("Location: index.php?controlador=index&accion=inicio");
 			} else {
 				$this->view->show("editarView.php", array("cita" => $cita, "errores" => $errores));

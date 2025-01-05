@@ -102,10 +102,10 @@ class UsuarioModel
     // Obtener un registro por DNI
     public function getByDni($id)
     {
-        $gsent = $this->db->prepare('SELECT * FROM citas_usuarios WHERE dni = ?');
+        $gsent = $this->db->prepare('SELECT * FROM citas_usuarios WHERE nif = ?');
         $gsent->bindParam(1, $id);
         $gsent->execute();
-        $gsent->setFetchMode(PDO::FETCH_CLASS, "PersonaModel");
+        $gsent->setFetchMode(PDO::FETCH_CLASS, "UsuarioModel");
         $resultado = $gsent->fetch();
         return $resultado;
     }

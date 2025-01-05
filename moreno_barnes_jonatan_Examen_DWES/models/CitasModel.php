@@ -26,7 +26,7 @@ class CitasModel
     
     public function getAll()
     {       
-        $consulta = $this->db->prepare('select * from citas_citas');
+        $consulta = $this->db->prepare('select * from citas_citas where cita_id not in (select cita_id from citas_reservas)');
         $consulta->execute();
        
         $resultado = $consulta->fetchAll();

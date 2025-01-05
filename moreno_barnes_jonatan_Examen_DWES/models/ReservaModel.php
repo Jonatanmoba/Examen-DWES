@@ -4,7 +4,7 @@ class ReservaModel
     protected $db;
  
     private $reserva_id;
-    private $libro_id;
+    private $cita_id;
 	private $usuario_id;
 	
 	public function __construct()
@@ -20,6 +20,10 @@ class ReservaModel
     public function setUsuario_id( $codigo )
     {
         return $this->usuario_id = $codigo;
+    }
+    
+    public function setCita_id($valor){
+        return $this->cita_id = $valor;
     }
     
 	
@@ -55,18 +59,18 @@ class ReservaModel
 		
         if( ! isset( $this->reserva_id ) )
         {
-			$consulta = $this->db->prepare('INSERT INTO `biblioteca_reservas` ( `libro_id`, `usuario_id`) VALUES ( ?,?)');
+			$consulta = $this->db->prepare('INSERT INTO `citas_reservas` ( `cita_id`, `usuario_id`) VALUES ( ?,?)');
             
-            $consulta->bindParam( 1,  $this->libro_id );
+            $consulta->bindParam( 1,  $this->cita_id );
             $consulta->bindParam( 2,  $this->usuario_id );
             $resultado = $consulta->execute();
             $this->reserva_id = $this->db->lastInsertId();
         }
         else
         {
-            $consulta = $this->db->prepare('UPDATE `biblioteca_reservas` SET `libro_id`=?,`usuario_id`=? WHERE reserva_id =?');
+            $consulta = $this->db->prepare('UPDATE `citas_reservas` SET `cita_id`=?,`usuario_id`=? WHERE reserva_id =?');
             
-            $consulta->bindParam( 1,  $this->libro_id );
+            $consulta->bindParam( 1,  $this->cita_id );
             $consulta->bindParam( 2,  $this->usuario_id );
             $consulta->bindParam( 3,  $this->reserva_id  );
             $resultado = $consulta->execute();
