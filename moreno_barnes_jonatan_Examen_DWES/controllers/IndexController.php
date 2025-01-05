@@ -74,10 +74,9 @@ class IndexController
 	
 		$errores = array();
 		$codigocita = $_REQUEST['codigo'];
-		$_SESSION['codigo'] = $codigocita;
 	
 		$item = new CitasModel();
-		$cita = $item->getByCita($_SESSION['codigo']);
+		$cita = $item->getByCita($codigocita);
 	
 		$usuario = new UsuarioModel();
 	

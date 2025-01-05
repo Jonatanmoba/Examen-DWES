@@ -13,7 +13,7 @@ Hora : <?php echo $cita['hora']?><br>
 
 <form method="post" action="index.php?controlador=index&accion=editarCitas">
 
-<input type="hidden" name="codigo" value="<?php echo $_SESSION['codigo']?>">
+<input type="hidden" name="codigo" value="<?php echo $_REQUEST['codigo']?>">
 
 <?php echo isset( $errores[ "dni" ] ) ? "*":"" ?>
 <label for="nif" >NIF</label>

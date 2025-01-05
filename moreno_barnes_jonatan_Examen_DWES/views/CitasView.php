@@ -11,20 +11,19 @@
             <tr><th>Codigo </th><th>Fecha </th><th>Hora</th></tr>
             <?php
 		foreach ($citas as $cita): ?>
-        <tr><td><?php echo $cita['cita_id']. ' ' ?></td><td><?php echo $cita['fecha']. ' '?></td><td><?php echo $cita['hora'] . ' '?></td>  <a href="index.php?controlador=index&accion=editarCitas&codigo=<?php echo $cita['cita_id']?>">Editar</a></tr>
-    </table>
-			
-
-
-			
-
-
-
-			</br>
-
-		<?php
+        <tr><td><?php echo $cita['cita_id']. ' ' ?></td><td><?php echo $cita['fecha']. ' '?></td><td><?php echo $cita['hora'] . ' '?>  <a href="index.php?controlador=index&accion=editarCitas&codigo=<?php echo $cita['cita_id']?>">Editar</a></td></tr>
+        
+        
+        
+        
+        
+        
+        
+    
+    <?php
 		endforeach;
 		?>
+        </table>
 
 
 	
