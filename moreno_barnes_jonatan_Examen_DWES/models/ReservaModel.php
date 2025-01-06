@@ -30,9 +30,9 @@ class ReservaModel
 	public function getReservasUsuario( $nif, $telefono )
     {       
 		
-        $consulta = $this->db->prepare('select * from citas_citas, citas_reservas, citas_usuarios where citas_usuarios.usuario_id = citas_reservas.usuario_id and citas_reservas.cita_id = citas_citas.cita_id nif = ? and telefono = ? ');
+        $consulta = $this->db->prepare(' select * from citas_citas, citas_reservas, citas_usuarios where citas_usuarios.usuario_id = citas_reservas.usuario_id and citas_reservas.cita_id = citas_citas.cita_id and nif = ? and telefono = ? ');
 		$consulta->bindParam( 1, $nif );
-		$consulta->bindParam( 1, $telefono );
+		$consulta->bindParam( 2, $telefono );
         $consulta->execute();
        
         $resultado = $consulta->fetchAll();
@@ -45,7 +45,7 @@ class ReservaModel
     public function getByLibroIdByUsuarioId( $libro_id, $usuario_id )
     {       
 		
-        $consulta = $this->db->prepare('select * from biblioteca_reservas , biblioteca_libros ,biblioteca_categorias where biblioteca_libros.categoria_id = biblioteca_categorias.categoria_id and biblioteca_reservas.libro_id = biblioteca_libros.libro_id and biblioteca_reservas.libro_id =  ? and biblioteca_reservas.usuario_id = ?');
+        $consulta = $this->db->prepare(' select * from biblioteca_reservas , biblioteca_libros ,biblioteca_categorias where biblioteca_libros.categoria_id = biblioteca_categorias.categoria_id and biblioteca_reservas.libro_id = biblioteca_libros.libro_id and biblioteca_reservas.libro_id =  ? and biblioteca_reservas.usuario_id = ? ');
 		$consulta->bindParam( 1, $libro_id );
         $consulta->bindParam( 2, $usuario_id );
         $consulta->execute();

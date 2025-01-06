@@ -118,10 +118,9 @@ class IndexController
 				$usuario->setTelefono($_REQUEST['telefono']);
 				$usuario->setEmail($_REQUEST['email']);
 				$usuario->save();
-				$resultadousuario = new UsuarioModel();
-				$resultadousuario= $usuario->getByDni($_REQUEST['dni']);
+
 				$reserva->setCita_id($codigocita);
-				$reserva->setUsuario_Id($resultadousuario->usuario_id); // Si usuario_id es pública
+				$reserva->setUsuario_Id($usuario->usuario_id); 
 
 				$reserva->save();
 				header("Location: index.php?controlador=index&accion=inicio");
