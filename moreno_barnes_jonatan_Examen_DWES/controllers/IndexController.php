@@ -134,6 +134,19 @@ class IndexController
 	
 		$this->view->show("editarView.php", array("cita" => $cita, "errores" => $errores));
 	}
+	public function eliminarCitas(){
+		require 'models/UsuarioModel.php';
+		require 'models/CitasModel.php';
+		require 'models/ReservaModel.php';
+		$reserva = new ReservaModel();
+
+
+		if(isset($_REQUEST['codigo'])){
+			$reserva->delete($_REQUEST['codigo']);
+			header("Location: index.php?controlador=index&accion=inicio");
+
+		}
+	}
 	
 	
 

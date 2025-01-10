@@ -79,20 +79,19 @@ class ReservaModel
         return $resultado;
     }
     
-     public function delete()
+     public function delete($codigo)
     {
         
-        if( isset( $this->reserva_id ) )
-        {
-            $consulta = $this->db->prepare('DELETE FROM `biblioteca_reservas` WHERE reserva_id =?');
+       
+            $consulta = $this->db->prepare('DELETE FROM `citas_reservas` WHERE cita_id =?');
             
-            $consulta->bindParam( 1,  $this->reserva_id );
+            $consulta->bindParam( 1,  $codigo );
             
             
             $resultado = $consulta->execute();
             return $resultado;
             
-        }
+        
        
         
       
